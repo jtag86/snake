@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { IBuiltBoard } from '../../business/Board'
+import { IBuildBoard } from '../../business/Board'
 import BoardCell from '../BoardCell/BoardCell'
 
 const Wrapper = styled.div<{rows: number, columns: number}>`
@@ -18,7 +18,7 @@ const Wrapper = styled.div<{rows: number, columns: number}>`
 `
 
 type Props = {
-  board: IBuiltBoard
+  board: IBuildBoard
 }
 
 

@@ -6,7 +6,7 @@ interface ISize {
   columns: number,
 }
 
-export interface IBuiltBoard {
+export interface IBuildBoard {
   rows: IDefaultCell[][],
   size: ISize,
 }
@@ -16,7 +16,7 @@ export const buildBoard = ({rows, columns} : {rows: number, columns: number}) =>
     Array.from({length: columns}, () => ({...defaultCell}))
   )
   
-  const obj: IBuiltBoard = {
+  const obj: IBuildBoard = {
     rows: builtRows,
     size: { rows, columns }
   }

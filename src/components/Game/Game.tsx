@@ -19,7 +19,7 @@ const Game: React.FC<Props> = ({rows, columns}) => {
         (
           <Menu handleClick={restartGameOver} />
         ) : (
-          <Snake rows={rows} columns={columns} />
+          <Snake rows={rows} columns={columns} setGameOver={setGameOver}/>
         )
       }
     </div>

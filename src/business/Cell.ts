@@ -1,7 +1,9 @@
 export interface IDefaultCell {
-  occupied: boolean
+  occupied: boolean,
+  style: string
 }
 
 export const defaultCell: IDefaultCell = {
-  occupied: false
+  occupied: false,
+  style: ""
 }

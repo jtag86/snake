@@ -1,8 +1,20 @@
 import React from 'react'
+import styled from 'styled-components/macro'
+import { IDefaultCell } from '../../business/Cell'
 
-const BoardCell = () => {
+interface Props {
+  cell: IDefaultCell
+}
+
+const Cell = styled.div<{cellStyle: string}>`
+  
+`
+
+const BoardCell: React.FC<Props> = ({cell}) => {
   return (
-    <div>BoardCell</div>
+    <Cell cellStyle={cell.style}>
+      
+    </Cell>
   )
 }
 

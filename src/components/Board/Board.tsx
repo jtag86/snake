@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { IBuiltBoard } from '../../business/Board'
+import BoardCell from '../BoardCell/BoardCell'
 
 const Wrapper = styled.div<{rows: number, columns: number}>`
   margin: 2rem auto;
@@ -27,7 +28,7 @@ const Board: React.FC<Props> = ({board}) => {
       {
         board.rows.map((row, y) => 
           row.map((cell, x) => (
-            <div>1</div>
+            <BoardCell cell={cell}/>
           ))
         )
       }

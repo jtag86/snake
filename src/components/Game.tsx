@@ -1,7 +1,7 @@
 import React from 'react'
-import { useGameOver } from '../../hooks/useGameOver'
-import Menu from '../Menu/Menu'
-import Snake from '../Snake/Snake'
+import { useGameOver } from '../hooks/useGameOver'
+import Menu from './Menu'
+import Snake from './Snake'
 
 type Props = {
   rows: number,
@@ -11,7 +11,6 @@ type Props = {
 const Game: React.FC<Props> = ({rows, columns}) => {
 
   const [gameOver, setGameOver, restartGameOver] = useGameOver()
-
   return (
     <div>
       {

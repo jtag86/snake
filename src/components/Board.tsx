@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components/macro'
-import { IBuildBoard } from '../../business/Board'
-import BoardCell from '../BoardCell/BoardCell'
+import { IBoard } from '../business/Board'
+import BoardCell from './BoardCell'
 
 const Wrapper = styled.div<{rows: number, columns: number}>`
   margin: 2rem auto;
-  width: 45vw;
-  height: 90vh;
+  width: 500px;
+  height: 500px;
   background-color: rgb(32, 0, 64);
   border: 10px solid rgb(32, 0, 64);
   border-radius: 10px;
@@ -18,19 +18,18 @@ const Wrapper = styled.div<{rows: number, columns: number}>`
 `
 
 type Props = {
-  board: IBuildBoard
+  board: IBoard
 }
-
 
 const Board: React.FC<Props> = ({board}) => {
   return (
     <Wrapper rows={board.size.rows} columns={board.size.columns}>
       {
-        board.rows.map((row, y) => 
-          row.map((cell, x) => (
-            <BoardCell cell={cell}/>
-          ))
-        )
+        board.rows.map((row, y) => {
+          return row.map((cell, x) => {
+            return <BoardCell key={x} cell={cell}/>
+          })
+        })
       }
     </Wrapper>
   )

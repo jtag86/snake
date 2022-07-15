@@ -1,9 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-import { buildBoard } from '../business/Board'
+import { buildBoard, nextBoard } from '../business/Board'
+import { ISnake } from '../business/Snake'
 
-export const useBoard = ({ rows, columns, }: { rows: number, columns: number }) => {
-  const [board] = useState(buildBoard({rows, columns}))
+export const useBoard = (
+  rows: number, 
+  columns: number,
+  player: ISnake,
+) => {
+  const [board, setBoard] = useState(buildBoard({rows, columns}))
+
+  useEffect(() => {
+    setBoard(() => 
+      nextBoard(rows, columns, player)
+    )
+  }, [player])
 
   return [board] as const
 }

@@ -10,6 +10,6 @@ const buildPlayer = (rows: number, columns: number) => {
 
 export const usePlayer = (rows: number, columns: number) => {
     const [player, setPlayer] = useState(buildPlayer(rows, columns))
-
+    
     return [player, setPlayer] as const
 }

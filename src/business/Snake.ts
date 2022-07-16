@@ -1,4 +1,5 @@
 import { IDefaultCell } from "./Cell";
+import { IFruit } from "./Fruit";
 
 interface ICoord {
     x: number,
@@ -28,10 +29,12 @@ export const buildSnake = (rows: number, columns: number) => {
     return snake
 }
 
-export const transferBoard = (player: ISnake, rows: IDefaultCell[][]) => {
-    const _y = player.headY
-    const _x = player.headX
-    rows[_y][_x] = {style: "snake"}
-    return rows 
+export const isWithinTail = (snake: ISnake) => {
+    const len = snake.tail.length
+    for(let i = 0; i < len; i++) {
+        if(snake.tail[i].x === snake.headX && snake.tail[i].y === snake.headY) {
+            return true
+        }
+    }
+    return false
 }
-

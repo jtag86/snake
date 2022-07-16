@@ -1,7 +1,14 @@
 import React from 'react'
+import styled from 'styled-components/macro'
 import { useGameOver } from '../hooks/useGameOver'
 import Menu from './Menu'
 import Snake from './Snake'
+
+const Wrapper = styled.div`
+  width: 100vw;
+  height: 70vh;
+  padding-top: 10px;  
+`
 
 type Props = {
   rows: number,
@@ -12,7 +19,7 @@ const Game: React.FC<Props> = ({rows, columns}) => {
 
   const [gameOver, setGameOver, restartGameOver] = useGameOver()
   return (
-    <div>
+    <Wrapper>
       {
         gameOver ?
         (
@@ -21,7 +28,7 @@ const Game: React.FC<Props> = ({rows, columns}) => {
           <Snake rows={rows} columns={columns} setGameOver={setGameOver}/>
         )
       }
-    </div>
+    </Wrapper>
   )
 }
 

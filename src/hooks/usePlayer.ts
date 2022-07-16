@@ -1,7 +1,5 @@
 import { useState, useCallback } from 'react'
-import { buildSnake } from '../business/Snake'
-
-
+import { buildSnake, ISnake } from '../business/Snake'
 
 const buildPlayer = (rows: number, columns: number) => {
     const player = buildSnake(rows, columns)
@@ -10,6 +8,5 @@ const buildPlayer = (rows: number, columns: number) => {
 
 export const usePlayer = (rows: number, columns: number) => {
     const [player, setPlayer] = useState(buildPlayer(rows, columns))
-    
     return [player, setPlayer] as const
 }

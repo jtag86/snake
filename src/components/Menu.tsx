@@ -1,22 +1,18 @@
 import React from 'react'
-import styled from 'styled-components'
-
-const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #cce;
-`
+import styled from 'styled-components/macro'
 
 const Button = styled.div`
-  padding: 40px 80px;
-  font-size: 2rem;
+  padding: 40px 0px;
+  font-size: 3rem;
   border-radius: 30px;
   border: none;
-  background-color: #fff;
+  background-color: purple;
   cursor: pointer;
+  max-width: 300px;
+  text-align: center;
+  margin: 10rem auto;
+  box-shadow: 0px 0px 10px 10px rgba( 0, 0, 0, 0.5);
+  color: white;
 `
 
 type Props = {
@@ -25,9 +21,7 @@ type Props = {
 
 const Menu: React.FC<Props> = ({handleClick}) => {
   return (
-    <Wrapper>
-      <Button onClick={handleClick}>Play Snake</Button>
-    </Wrapper>
+    <Button onClick={handleClick}>Play Snake</Button>
   )
 }
 

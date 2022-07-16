@@ -2,7 +2,7 @@ import { defaultCell } from "./Cell"
 import { IDefaultCell } from "./Cell"
 import { ISnake } from "./Snake"
 import { IPos } from './SnakeController'
-import { transferBoard } from './Snake'
+import { IFruit } from "./Fruit"
 
 interface ISize {
   rows: number,
@@ -29,13 +29,14 @@ export const buildBoard = ({rows, columns} : {rows: number, columns: number}) =>
   return obj
 }
 
-export const nextBoard = (rows: number, columns: number, player: ISnake) => {
+export const nextBoard = (rows: number, columns: number, player: ISnake, fruit: IFruit) => {
   let builtRows = Array.from({length: rows}, () => 
     Array.from({length: columns}, () => ({...defaultCell}))
   )
   
   builtRows = transferBoard(
     player,
+    fruit,
     builtRows,
   )
 
@@ -45,6 +46,25 @@ export const nextBoard = (rows: number, columns: number, player: ISnake) => {
   }
 }
 
+export const transferBoard = (player: ISnake, fruit: IFruit, rows: IDefaultCell[][]) => {
+  const playerY = player.headY
+  const playerX = player.headX
+  const fruitY = fruit.y
+  const fruitX = fruit.x
+  rows[playerY][playerX] = { style: "snake" }
+  rows[fruitY][fruitX] = { style: "fruit" }
+  const len = player.tail.length
+  if(len) {
+    for(let i = 0; i < len; i++) {
+      const tailX = player.tail[i].x
+      const tailY = player.tail[i].y
+      rows[tailY][tailX] = { style: "tail" }
+    }
+
+  }
+  return rows 
+}
+
 export const isWithinBoard = (board: IBoard, nextPosition: IPos) => {
   const row = nextPosition.row
   const column = nextPosition.column
@@ -52,16 +72,3 @@ export const isWithinBoard = (board: IBoard, nextPosition: IPos) => {
   if(!isValidPosition) return false
   return true
 }
-
-// export const hasCollision = (board: IBoard, nextPosition: ISnake) => {
-//   const row = nextPosition.headX
-//   const column = nextPosition.headY
-
-//   if(
-//     board.rows[row] &&
-//     board.rows[row][column] &&
-//     board.rows[row][column].occupied
-//   ) {
-//     return true
-//   }
-// }

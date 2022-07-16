@@ -7,8 +7,5 @@ export const useGameOver = () => {
     setGameOver(false)
   }, [])
 
-
-
-
   return [gameOver, setGameOver, restartGameOver] as const
 }

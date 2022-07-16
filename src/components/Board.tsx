@@ -4,9 +4,11 @@ import { IBoard } from '../business/Board'
 import BoardCell from './BoardCell'
 
 const Wrapper = styled.div<{rows: number, columns: number}>`
-  margin: 2rem auto;
-  width: 500px;
-  height: 500px;
+  margin: auto;
+  max-width: 500px;
+  max-height: 500px;
+  width: 90vw;
+  height: 90vw;
   background-color: rgb(32, 0, 64);
   border: 10px solid rgb(32, 0, 64);
   border-radius: 10px;
